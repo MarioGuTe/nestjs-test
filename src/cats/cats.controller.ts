@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
@@ -9,5 +9,9 @@ export class CatsController {
   @Get('breed')
   findBreed(): string {
     return 'Orange Cat';
+  }
+  @Get(':id')
+  findOne(@Param('id') id: string): string {
+    return `This action returns a #${id} cat`;
   }
 }
