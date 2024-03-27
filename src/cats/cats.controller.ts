@@ -11,10 +11,7 @@ export class CatsController {
   findBreed(): string {
     return 'Orange Cat';
   }
-  @Get(':id')
-  findOne(@Param('id') id: string): string {
-    return `This action returns a #${id} cat`;
-  }
+
   @Post('create')
   async createCat(@Body() createCatDto: CreateCatDto) {
     this.catsService.createCat(createCatDto);
@@ -23,5 +20,9 @@ export class CatsController {
   @Get()
   async findAll(): Promise<Cat[]> {
     return this.catsService.findAllCats();
+  }
+  @Get(':id')
+  async GetCatById(@Param('id') id: string): Promise<Cat> {
+    return this.catsService.GetCatById(Number(id));
   }
 }
