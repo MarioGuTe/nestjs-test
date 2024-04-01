@@ -6,6 +6,7 @@ import {
   Body,
   UsePipes,
   ValidationPipe,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -31,7 +32,7 @@ export class CatsController {
     return this.catsService.findAllCats();
   }
   @Get(':id')
-  async GetCatById(@Param('id') id: string): Promise<Cat> {
-    return this.catsService.GetCatById(Number(id));
+  async GetCatById(@Param('id', ParseIntPipe) id: number): Promise<Cat> {
+    return this.catsService.GetCatById(id);
   }
 }
