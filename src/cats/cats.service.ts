@@ -15,7 +15,7 @@ export class CatsService {
     return this.catsRepository.getCats();
   }
 
-  GetCatById(id: number): Cat {
-    return this.cats.find((cat) => cat.id === id);
+  GetCatById(id: number): Promise<Cat> {
+    return this.catsRepository.getCatById(id);
   }
 }

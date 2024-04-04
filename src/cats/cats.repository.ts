@@ -32,4 +32,8 @@ export class CatsRepository {
   async getCats() {
     return this.cats;
   }
+
+  async getCatById(id: number) {
+    return this.cats.find((cats) => cats.id === id);
+  }
 }
